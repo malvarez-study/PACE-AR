@@ -13,3 +13,23 @@ const connectMomentum = () => {
 };
 connectMomentum();
 new MutationObserver(connectMomentum).observe(document.getElementById('root'), { childList: true, subtree: true });
+// Pause decorative animation offscreen and when the tab is hidden.
+const sectionMotion = new IntersectionObserver(entries => {
+ for (const entry of entries) {
+  entry.target.toggleAttribute('data-motion-paused', !entry.isIntersecting || document.hidden);
+  entry.target.toggleAttribute('data-motion-visible', entry.isIntersecting);
+ }
+}, { rootMargin: '80px 0px', threshold: 0 });
+const connectSections = () => {
+ document.querySelectorAll('.desktop-landing section:not([data-motion-tracked])').forEach(section => {
+  section.setAttribute('data-motion-tracked', '');
+  sectionMotion.observe(section);
+ });
+};
+connectSections();
+new MutationObserver(connectSections).observe(document.getElementById('root'), {childList:true, subtree:true});
+document.addEventListener('visibilitychange', () => {
+ document.querySelectorAll('section[data-motion-tracked]').forEach(section => {
+  section.toggleAttribute('data-motion-paused', document.hidden || !section.hasAttribute('data-motion-visible'));
+ });
+});

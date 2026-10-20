@@ -6,7 +6,7 @@ const colors: Record<ColorKey, { hex: string; asset: string; label: string; webL
   "Midnight Black": { hex: "#161616", asset: "/assets/official/pace-ar-black-front.svg", label: "Dark", webLabel: "Jet", watermark: ["JET", "BLACK"] },
   "Dusk Maroon": { hex: "#681F3C", asset: "/assets/official/pace-ar-maroon.svg", label: "Dusk", webLabel: "Dusk", watermark: ["DUSK", "MAROON"] },
   "Navy Blue": { hex: "#172746", asset: "/assets/official/pace-ar-navy-blue.svg", label: "Midnight", webLabel: "Midnight", watermark: ["MIDNIGHT", "BLUE"] },
-  "Sunburst Orange": { hex: "#E65F26", asset: "/assets/official/pace-ar-orange.svg", label: "Dawn", webLabel: "Sunburst", watermark: ["SUNBURST", "ORANGE"] },
+  "Sunburst Orange": { hex: "#E65F26", asset: "/assets/official/pace-ar-orange-three-quarter.png", label: "Dawn", webLabel: "Sunburst", watermark: ["SUNBURST", "ORANGE"] },
 };
 
 const finishSurfaces: Record<ColorKey, string> = {
@@ -408,7 +408,7 @@ return () => { window.removeEventListener('scroll',schedule); window.removeEvent
           </div>
           <div className="dl-hero-visual">
             <div className="dl-hero-glow" />
-            <img className="dl-hero-watch" src="/assets/official/pace-ar-orange.svg" alt="Sunburst Orange PACE AR watch" />
+            <img className="dl-hero-watch" src="/assets/official/pace-ar-orange-three-quarter.png" alt="Sunburst Orange PACE AR watch" />
             <div className="dl-goal-badge"><span>Daily Goal</span><DailyGoalCount /></div>
           </div>
         </div>
@@ -475,8 +475,8 @@ return () => { window.removeEventListener('scroll',schedule); window.removeEvent
         <div className="dl-container">
           <div className="dl-section-heading centered"><Heading>However you move,<br />PACE AR moves with you.</Heading></div>
           <div className="dl-persona-grid">
-            <article><img className="persona-flight-attendant" src="/assets/campaign/persona-flight-attendant.jpeg" alt="Flight attendant standing inside an airplane cabin" /><div><span>Sophia Reyes · Quezon City</span><Heading level={3}>Every run becomes a story worth sharing.</Heading><p>Flight attendant and content creator, age 21.</p></div></article>
-            <article><img className="persona-business-owner" src="/assets/campaign/persona-business-owner.png" alt="Professional working on a laptop at a desk" /><div><span>Paolo De Guzman · Makati</span><Heading level={3}>Fitness that works around a full day.</Heading><p>Business owner and corporate manager, age 29.</p></div></article>
+            <article><img className="persona-flight-attendant" src="/assets/campaign/persona-flight-attendant.jpeg" alt="Flight attendant standing inside an airplane cabin" /><div><span>Sophia Reyes · Quezon City</span><Heading level={3}>Every run becomes a story worth sharing.</Heading><p>Flight attendant and content creator, age 23.</p></div></article>
+            <article><img className="persona-business-owner" src="/assets/campaign/persona-business-owner.png" alt="Professional working on a laptop at a desk" /><div><span>Paolo De Guzman · Makati</span><Heading level={3}>Fitness that works around a full day.</Heading><p>Business owner and corporate manager, age 32.</p></div></article>
           </div>
         </div>
       </section>
@@ -552,9 +552,9 @@ return () => { window.removeEventListener('scroll',schedule); window.removeEvent
     <footer className="dl-footer">
       <div className="dl-container">
         <div className="dl-footer-brand"><a className="dl-footer-identity" href="#dl-overview"><Logo /><Heading level={3}>TrailQuest Inc.</Heading></a><p>Turn every walk into an adventure with fitness gamified.</p></div>
-        <div><span>Explore</span>{[["Overview", "dl-overview"], ["Features", "dl-features"], ["How It Works", "dl-how"], ["Colors", "dl-colors"], ["FAQ", "dl-faq"]].map(([label, id]) => <a href={`#${id}`} key={id}>{label}</a>)}</div>
-        <div><span>About this project</span><p className="footer-note">PACE AR is a conceptual fitness product by TrailQuest. Campaign personas, reviews and activity figures are illustrative.</p></div>
-        <div><span>Contact</span><a href="mailto:help@trailquest.com"><img src="/assets/official/pace-ar-email-icon.svg" alt="" />help@trailquest.com</a><a href="https://www.trailquest.com"><img src="/assets/official/pace-ar-web-icon.svg" alt="" />www.trailquest.com</a><a href="https://www.facebook.com/profile.php?id=61595797881562" target="_blank" rel="noopener noreferrer"><img src="/assets/official/pace-ar-fb-icon.svg" alt="" />FB: TrailQuest Inc</a><a href="https://www.instagram.com/trailquest.inc/" target="_blank" rel="noopener noreferrer"><img src="/assets/official/pace-ar-ig-icon.svg" alt="" />IG: @trailquest.inc</a></div>
+        <div><span>Explore</span>{[["Overview", "dl-overview"], ["Colors", "dl-colors"], ["Features", "dl-features"], ["How it Works", "dl-how"], ["FAQ", "dl-faq"]].map(([label, id]) => <a href={`#${id}`} key={id}>{label}</a>)}</div>
+        <div><span>ABOUT THIS PRODUCT</span><p className="footer-note">PACE AR is Next-Gen augmented reality performance gear by TrailQuest Inc. Designed to elevate outdoor tracking and real-time activity metrics.</p></div>
+        <div><span>Contact</span><a href="mailto:help@trailquest.com"><img src="/assets/official/pace-ar-email-icon.svg" alt="" />help@trailquest.com</a><a href="https://www.trailquest.com"><img src="/assets/official/pace-ar-web-icon.svg" alt="" />www.trailquest.com</a><a href="https://www.facebook.com/profile.php?id=61595797881562" target="_blank" rel="noopener noreferrer"><img src="/assets/official/pace-ar-fb-icon.svg" alt="" />TrailQuest Inc</a><a href="https://www.instagram.com/trailquest.inc/" target="_blank" rel="noopener noreferrer"><img src="/assets/official/pace-ar-ig-icon.svg" alt="" />@trailquest.inc</a></div>
       </div>
       <div className="dl-footer-bottom"><span>Copyright © 2026 TrailQuest Inc.</span><div><a href="#dl-overview">Back to top ↑</a></div></div>
     </footer>
