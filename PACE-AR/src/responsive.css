@@ -664,3 +664,209 @@
 /* Keep the supplied lifestyle portraits framed naturally in both card sizes. */
 .dl-persona-grid img.persona-flight-attendant { object-position: 50% 38%; }
 .dl-persona-grid img.persona-business-owner { object-position: 65% 50%; }
+
+/* Larger introduction product with a quiet reveal and restrained idle motion. */
+.dl-hero-watch {
+ --hero-watch-size: 640px;
+ width: var(--hero-watch-size);
+ height: var(--hero-watch-size);
+ object-fit: contain;
+ left: 50%; right: auto;
+ margin-left: calc(var(--hero-watch-size) / -2);
+ top: calc(50% - var(--hero-watch-size) / 2);
+ animation: none;
+}
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-hero-watch { --hero-watch-size: 500px; }
+}
+@media (max-width: 640px) {
+ .dl-hero-watch { --hero-watch-size: min(440px, 112vw); }
+}
+@media (prefers-reduced-motion: no-preference) {
+ .dl-hero-watch {
+  animation: hero-watch-arrive 1.9s cubic-bezier(.22, .61, .36, 1) both,
+             hero-watch-hover 8s ease-in-out 1.9s infinite;
+ }
+ .dl-hero-glow { animation: hero-glow-arrive 2.2s ease-out both; }
+}
+@keyframes hero-watch-arrive {
+ 0% { opacity: 0; transform: translate3d(0, 32px, 0) scale(.18); }
+ 26% { opacity: 1; }
+ 78% { opacity: 1; transform: translate3d(0, -3px, 0) scale(1.018); }
+ 100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes hero-watch-hover {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-6px); }
+}
+@keyframes hero-glow-arrive {
+ from { opacity: 0; }
+ to { opacity: 1; }
+}
+
+/* Keep the features introduction centered on a single desktop line. */
+.dl-features-section .dl-section-heading.centered > p {
+ width: 100%; max-width: none; margin-left: auto; margin-right: auto;
+ text-align: center; text-wrap: wrap;
+}
+@media (min-width: 901px) {
+ .dl-features-section .dl-section-heading.centered > p { white-space: nowrap; }
+}
+
+/* A luminous quest collectible replaces the opaque AR details overlay. */
+.quests .dl-quest-ticket { padding: 0; overflow: hidden; background: #21192f; border-radius: 16px; box-shadow: 0 18px 40px #5e3b8738; }
+.quests .dl-quest-ticket img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.quests .dl-card-hover-details { display: none; background: none; box-shadow: none; backdrop-filter: none; }
+.quests:hover .dl-quest-ticket, .quests:focus-visible .dl-quest-ticket, .quests.active .dl-quest-ticket { opacity: 1; transform: rotate(0); }
+.dl-editorial-grid.expanded .quests .dl-quest-ticket { width: 260px; height: 312px; left: calc(50% - 130px); right: auto; top: 48px; }
+.dl-editorial-grid.expanded .quests .dl-card-hover-details { display: grid; inset: auto 6% 170px; padding: 0; text-align: center; color: #352443; gap: 20px; }
+.quests .dl-card-hover-details strong { font-size: 14px; }
+.quests .dl-card-hover-details small { font-size: 12px; color: #62526f; }
+.dl-editorial-grid.expanded .quests .dl-editorial-copy { left: 24px; right: 24px; text-align: center; }
+.quests .dl-quest-ticket::after { content: ''; position: absolute; left: 12%; right: 12%; top: 24%; height: 1px; background: linear-gradient(90deg,transparent,#e7d4ff,transparent); box-shadow: 0 0 12px #c29afa; opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+ .quests:hover .dl-quest-ticket::after, .quests:focus-visible .dl-quest-ticket::after, .quests.active .dl-quest-ticket::after { animation: crystal-scan 4s ease-in-out infinite; }
+ .quests .dl-quest-ticket { transition: transform .65s cubic-bezier(.22,.61,.36,1), box-shadow .65s ease; }
+ .quests:hover .dl-quest-ticket, .quests.active .dl-quest-ticket { box-shadow: 0 20px 48px #7047a34d; }
+}
+@keyframes crystal-scan { 0%, 100% { top: 24%; opacity: .75; } 50% { top: 70%; opacity: .9; } }
+@media (max-width: 640px) {
+ .dl-editorial-grid.expanded .quests.active { min-height: 690px; }
+ .dl-editorial-grid.expanded .quests .dl-card-hover-details { bottom: 185px; gap: 10px; }
+ .quests .dl-card-hover-details strong { font-size: 11px; }
+ .quests .dl-card-hover-details small { font-size: 10px; }
+}
+.dl-editorial-grid.expanded .dl-editorial-card.quests.active { min-height: 740px; }
+.dl-editorial-card.quests > span { position: absolute; top: 24px; left: 24px; }
+.dl-editorial-grid.expanded .quests .dl-card-hover-details { bottom: 220px; }
+@media (max-width: 640px) { .dl-editorial-grid.expanded .dl-editorial-card.quests.active { min-height: 760px; } }
+
+/* Momentum uses the site's violet palette and a clear, luminous XP display. */
+.dl-editorial-card.progress { background: radial-gradient(ellipse at 75% 10%, #eee5fa, transparent 70%), #faf8fd; border-color: #ded3eb; }
+.progress .dl-progress-visual { opacity: 1 !important; gap: 14px; }
+.progress .dl-progress-visual > i { border-color: #e5daef; border-top-color: #8860bc; background: #fff; color: #60408d; box-shadow: 0 5px 20px #7951a51a; }
+.progress .dl-progress-visual > div > span { color: #68458e; }
+.progress .dl-progress-visual em { color: #786d84; }
+.progress .dl-progress-visual > div > strong { position: relative; overflow: hidden; height: 7px; background: #e6deef; }
+.progress .dl-progress-visual > div > strong::before { content: ''; position: absolute; inset: 0 32% 0 0; border-radius: inherit; background: linear-gradient(90deg,#7252a5,#b18ade); transform-origin: left; }
+.progress .dl-progress-visual > div > strong::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg,transparent 25%,#ffffffa6 50%,transparent 75%); transform: translateX(-100%); }
+.progress .dl-progress-visual > small { background: #ede4f7; border: 1px solid #ccb4e3; color: #694490; box-shadow: inset 0 0 0 3px #ffffff80; }
+.progress .dl-card-hover-details { display: none; background: none; box-shadow: none; backdrop-filter: none; }
+.dl-editorial-grid.expanded .dl-editorial-card.progress.active { min-height: 610px; }
+.dl-editorial-grid.expanded .progress .dl-progress-visual { top: 130px; left: 7%; right: 7%; transform: none; }
+.dl-editorial-grid.expanded .progress .dl-card-hover-details { display: grid; inset: auto 7% 230px; padding: 0; text-align: center; color: #49325f; }
+.progress .dl-card-hover-details strong { font-size: 14px; }
+.progress .dl-card-hover-details small { color: #72617f; font-size: 12px; }
+.dl-editorial-grid.expanded .progress .dl-editorial-copy { text-align: center; left: 28px; right: 28px; }
+@media (prefers-reduced-motion: no-preference) {
+ .progress .dl-progress-visual > div > strong::before { animation: momentum-fill 3s cubic-bezier(.22,.61,.36,1) both; }
+ .progress:is(:hover,:focus-visible,.active) .dl-progress-visual > div > strong::after { animation: momentum-shine 8s ease-in-out infinite; }
+ .progress:is(:hover,:focus-visible,.active) .dl-progress-visual > small { animation: momentum-badge 5.5s cubic-bezier(.45,0,.55,1) infinite; }
+ .progress .dl-progress-visual > small:nth-last-child(2) { animation-delay: .3s; }
+ .progress .dl-progress-visual > small:last-child { animation-delay: .6s; }
+}
+@keyframes momentum-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes momentum-shine { 0%,20% { transform: translateX(-100%); } 65%,100% { transform: translateX(100%); } }
+@keyframes momentum-badge { 0%,100% { transform: translateY(0); box-shadow: inset 0 0 0 3px #ffffff80; } 50% { transform: translateY(-2px); box-shadow: 0 3px 12px #a788e620,inset 0 0 0 3px #ffffff80; } }
+@media (max-width: 640px) {
+ .progress .dl-progress-visual { grid-template-columns: 52px 1fr repeat(3,30px); gap: 7px; left: 18px; right: 18px; }
+ .progress .dl-progress-visual > i { width: 50px; height: 50px; border-width: 6px; }
+ .progress .dl-progress-visual > small { width: 30px; height: 30px; }
+ .dl-editorial-grid.expanded .progress .dl-card-hover-details { gap: 12px; }
+ .progress .dl-card-hover-details strong { font-size: 12px; }
+ .progress .dl-card-hover-details small { font-size: 11px; }
+}
+
+/* An actual 82% arc with a quiet halo, matching the XP meter. */
+@property --momentum-angle { syntax: '<angle>'; inherits: false; initial-value: 295.2deg; }
+.progress .dl-progress-visual > i {
+ position: relative; isolation: isolate; flex-shrink: 0;
+ border: 0; border-radius: 50%; padding: 7px;
+ background: conic-gradient(from -90deg, #8c65bd 0deg, #b394d9 var(--momentum-angle), #e6dcef var(--momentum-angle), #e6dcef 360deg);
+ color: #704a9a; font-size: 11px; font-weight: 800;
+ box-shadow: 0 0 0 4px #b697d912, 0 6px 22px #7951a51f;
+}
+.progress .dl-progress-visual > i::before {
+ content: ''; position: absolute; z-index: -1; inset: 7px; border-radius: 50%;
+ background: radial-gradient(circle at 35% 25%, #fff, #f8f4fc);
+ box-shadow: inset 0 1px 4px #68458e12;
+}
+@media (prefers-reduced-motion: no-preference) {
+ .progress .dl-progress-visual > i { animation: momentum-ring-fill 3.5s cubic-bezier(.22,.61,.36,1) both; }
+ .progress:is(:hover,:focus-visible,.active) .dl-progress-visual > i { animation: momentum-ring-fill 3.5s cubic-bezier(.22,.61,.36,1) both, momentum-ring-glow 8s ease-in-out 3.5s infinite; }
+}
+@keyframes momentum-ring-fill { from { --momentum-angle: 0deg; } to { --momentum-angle: 295.2deg; } }
+@keyframes momentum-ring-glow {
+ 0%,100% { box-shadow: 0 0 0 4px #b697d912, 0 6px 22px #7951a51f; }
+ 50% { box-shadow: 0 0 0 5px #b697d91c, 0 0 24px #a17cc438; }
+}
+
+/* Removing animations offscreen resets their timelines for the next visit. */
+.progress:not([data-momentum-in-view]) .dl-progress-visual > i,
+.progress:not([data-momentum-in-view]) .dl-progress-visual > small,
+.progress:not([data-momentum-in-view]) .dl-progress-visual > div > strong::before,
+.progress:not([data-momentum-in-view]) .dl-progress-visual > div > strong::after { animation: none !important; }
+
+/* Center each journey caption beneath its illustration. */
+.dl-steps article > h3,
+.dl-steps article > p { text-align: center; margin-left: auto; margin-right: auto; }
+
+/* Tighter product-section rhythm without shrinking the product artwork. */
+.dl-colors-section { padding-block: 48px; }
+.dl-colors-section .dl-section-heading { margin-bottom: 16px; }
+.dl-colors-section .dl-color-display { height: 420px; }
+.dl-colors-section .dl-metrics { margin-top: 18px; }
+.dl-colors-section .dl-metrics article { min-height: 100px; padding-block: 18px; }
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-colors-section { padding-block: 40px; }
+ .dl-colors-section .dl-color-display { height: 360px; }
+}
+@media (max-width: 640px) {
+ .dl-colors-section { padding-block: 32px; }
+ .dl-colors-section .dl-color-display { height: 300px; }
+ .dl-colors-section .dl-color-layout { gap: 8px; }
+ .dl-colors-section .dl-metrics { margin-top: 18px; }
+ .dl-colors-section .dl-metrics article { min-height: 84px; padding-block: 12px; }
+}
+
+.desktop-landing section[id] { scroll-margin-top: var(--nav-offset, 96px); }
+
+
+/* A restrained typographic entrance complements the product reveal. */
+.dl-hero-copy { max-width: 570px; }
+.dl-hero-copy .dl-intro-brand { margin-bottom: 24px; gap: 8px; }
+.dl-hero-copy .dl-intro-brand > span { color: #b69ada; letter-spacing: .2em; }
+.dl-hero-copy h1 { line-height: .98; letter-spacing: -.055em; margin: 0; }
+.dl-hero-copy > p { max-width: 490px; line-height: 1.7; margin-top: 26px; margin-bottom: 30px; color: #b6b2bd; text-wrap: pretty; }
+@media (prefers-reduced-motion: no-preference) {
+ .dl-hero-copy .dl-intro-brand { animation: intro-copy-arrive 1s cubic-bezier(.22,.61,.36,1) .1s both; }
+ .dl-hero-copy h1 { animation: intro-copy-arrive 1.2s cubic-bezier(.22,.61,.36,1) .25s both; }
+ .dl-hero-copy > p { animation: intro-copy-arrive 1.2s cubic-bezier(.22,.61,.36,1) .4s both; }
+ .dl-hero-copy .dl-actions { animation: intro-copy-arrive 1.2s cubic-bezier(.22,.61,.36,1) .55s both; }
+}
+@keyframes intro-copy-arrive { from { opacity: 0; transform: translate3d(0,18px,0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+@media (max-width: 640px) {
+ .dl-hero-copy h1 { font-size: clamp(54px,15vw,82px); line-height: 1; }
+ .dl-hero-copy .dl-intro-brand { margin-bottom: 22px; }
+ .dl-hero-copy > p { font-size: 15px; line-height: 1.7; margin-block: 22px 26px; }
+}
+
+/* Lead with the product name; use the tagline as the supporting signature. */
+.dl-hero-copy .dl-intro-brand > strong { font-size: clamp(72px,7vw,108px); line-height: .98; letter-spacing: -.055em; }
+.dl-hero-copy h1 { font-size: clamp(30px,3vw,42px); line-height: 1.12; letter-spacing: -.025em; }
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-hero-copy .dl-intro-brand > strong { font-size: 58px; }
+ .dl-hero-copy h1 { font-size: 32px; }
+}
+@media (max-width: 640px) {
+ .dl-hero-copy .dl-intro-brand > strong { font-size: clamp(54px,15vw,82px); }
+ .dl-hero-copy h1 { font-size: 30px; }
+}
+
+/* A more legible introduction label with restrained violet emphasis. */
+.dl-hero-copy .dl-intro-brand > span { font-size: clamp(14px,1.15vw,17px); line-height: 1.4; letter-spacing: .16em; }
+@media (max-width: 640px) { .dl-hero-copy .dl-intro-brand > span { font-size: 13px; } }
+
+.dl-color-buy { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.dl-color-buy > img { width: 17px; height: 17px; object-fit: contain; flex-shrink: 0; }
+

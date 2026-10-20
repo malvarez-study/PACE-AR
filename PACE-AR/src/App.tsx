@@ -104,7 +104,7 @@ function App() {
       <div ref={dialogRef} className="checkout-modal" role="dialog" aria-modal="true" aria-label="Prototype checkout">
         <div className="modal-head"><div><span>Prototype checkout</span><Heading level={2} className="checkout-title">Make it yours.</Heading></div><Button kind="ghost" onClick={() => setModalOpen(false)} ariaLabel="Close checkout">×</Button></div>
         <div className="prototype-note"><i /> Prototype only — no real payment will be processed.</div>
-        {submitted ? <div className="inline-confirmation" role="status"><h3>Your demo is complete.</h3><p>{quantity} × PACE AR · {selectedColor} · ₱{(quantity * 2999).toLocaleString()}</p><p>No order was placed, no information was saved, and no payment was processed.</p><Button onClick={() => setModalOpen(false)}>Continue exploring</Button></div> : <form onSubmit={submitOrder}>
+        {submitted ? <div className="inline-confirmation" role="status"><h3>Your demo is complete.</h3><p>{quantity} × PACE AR · {selectedColor} | ₱{(quantity * 2999).toLocaleString()}</p><p>No order was placed, no information was saved, and no payment was processed.</p><Button onClick={() => setModalOpen(false)}>Continue exploring</Button></div> : <form onSubmit={submitOrder}>
           <div className="checkout-layout">
             <div className="form-fields">
               <Field label="Full name" name="name" />
@@ -118,7 +118,7 @@ function App() {
               </div></div>
             </div>
             <aside className="order-summary">
-              <div className="summary-product"><ProductImage color={selectedColor} /><div><span>PACE AR Gamified Fitness Bundle</span><strong>{colors[selectedColor].label} · ₱2,999</strong></div></div>
+              <div className="summary-product"><ProductImage color={selectedColor} /><div><span>PACE AR Gamified Fitness Bundle</span><strong>{colors[selectedColor].label} | ₱2,999</strong></div></div>
               <div className="quantity-row"><span>Quantity</span><div><Button kind="ghost" onClick={() => setQuantity(Math.max(1, quantity - 1))}>−</Button><strong>{quantity}</strong><Button kind="ghost" onClick={() => setQuantity(quantity + 1)}>+</Button></div></div>
               <div className="summary-total"><span>Total</span><strong>₱{(2999 * quantity).toLocaleString()}</strong></div>
               <Button type="submit" className="place-order">Complete Order — ₱{(2999 * quantity).toLocaleString()} <span aria-hidden="true">→</span></Button>
@@ -336,16 +336,25 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
 
 
   useEffect(() => {
-    const sectionIds = ["dl-overview", "dl-features", "dl-how", "dl-colors", "dl-faq"];
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) setActiveSection(visible.target.id);
-    }, { rootMargin: "-25% 0px -65% 0px", threshold: [0, .25, .5] });
-    sectionIds.forEach(id => {
-      const node = document.getElementById(id);
-      if (node) observer.observe(node);
-    });
-    return () => observer.disconnect();
+const ids = ['dl-overview','dl-colors','dl-features','dl-how','dl-faq'];
+let frame = 0;
+const update = () => {
+ const header = document.querySelector('.dl-navbar');
+ const offset = (header ? header.getBoundingClientRect().height : 80);
+ document.documentElement.style.setProperty('--nav-offset', offset + 'px');
+ let current = ids[0];
+ for (const id of ids) {
+  const section = document.getElementById(id);
+  if (section && section.getBoundingClientRect().top <= offset + 100) current = id;
+ }
+ setActiveSection(current);
+ frame = 0;
+};
+const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+window.addEventListener('scroll', schedule, {passive:true});
+window.addEventListener('resize', schedule);
+update();
+return () => { window.removeEventListener('scroll',schedule); window.removeEventListener('resize',schedule); cancelAnimationFrame(frame); };
   }, []);
 
   useEffect(() => {
@@ -382,7 +391,7 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
       <nav aria-label="Main navigation">
         <a className="dl-brand" href="#dl-overview"><Logo /><strong>PACE AR</strong></a>
         <div className="dl-nav-links">
-          {[["dl-overview", "Overview"], ["dl-features", "Features"], ["dl-how", "How It Works"], ["dl-colors", "Colors"], ["dl-faq", "FAQ"]].map(([id, label]) => <a className={activeSection === id ? "active" : ""} href={`#${id}`} key={id}>{label}</a>)}
+          {[["dl-overview", "Overview"], ["dl-colors", "Colors"], ["dl-features", "Features"], ["dl-how", "How it Works"], ["dl-faq", "FAQ"]].map(([id, label]) => <a className={activeSection === id ? "active" : ""} href={`#${id}`} key={id}>{label}</a>)}
         </div>
         <button className="dl-buy" onClick={onBuy}><img src="/assets/official/pace-ar-cart-icon.svg" alt="" />Buy PACE AR</button>
       </nav>
@@ -395,7 +404,7 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
             <div className="dl-intro-brand"><span>Introducing</span><strong>PACE AR</strong></div>
             <Heading level={1}>Level up<br />your walk.</Heading>
             <p>Stop just counting steps. Start earning experience points (XP) and unlocking real-life health rewards.</p>
-            <div className="dl-actions"><button className="hero-buy" onClick={onBuy}><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h3l2.4 11.4a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/><circle cx="10" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></svg><span>Buy PACE AR · ₱2,999</span></button><a href="#dl-features">Explore Features</a></div>
+            <div className="dl-actions"><button className="hero-buy" onClick={onBuy}><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h3l2.4 11.4a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/><circle cx="10" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></svg><span>Buy PACE AR | ₱2,999</span></button><a href="#dl-features">Explore Features</a></div>
           </div>
           <div className="dl-hero-visual">
             <div className="dl-hero-glow" />
@@ -407,11 +416,11 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
 
       <section className="dl-colors-section" id="dl-colors" style={{ "--finish-surface": finishSurfaces[selectedColor], "--finish-glow": `${colors[selectedColor].hex}20` } as React.CSSProperties}>
         <div className="dl-container">
-          <div className="dl-section-heading"><Heading>Choose your pace.</Heading><p>Four expressive finishes. The same complete PACE AR experience.</p><small className="demo-label">Concept specifications and activity figures shown for academic demonstration.</small></div>
+          <div className="dl-section-heading"><Heading>Choose your pace.</Heading><p>Four expressive finishes. The same complete PACE AR experience.</p></div>
           <div className="dl-color-layout">
             <div className="dl-color-controls">
               {(Object.keys(colors) as ColorKey[]).map(color => <button style={{ "--finish-color": colors[color].hex } as React.CSSProperties} aria-pressed={selectedColor === color} className={selectedColor === color ? "active" : ""} onClick={() => setSelectedColor(color)} key={color}><i style={{ background: colors[color].hex }} /><span>{colors[color].webLabel}</span></button>)}
-              <button className="dl-color-buy" onClick={onBuy}>Buy {colors[selectedColor].webLabel} · ₱2,999</button>
+              <button className="dl-color-buy" onClick={onBuy}><img src="/assets/official/pace-ar-cart-icon.svg" alt="" />Buy {colors[selectedColor].webLabel} | ₱2,999</button>
             </div>
             <div className={`dl-color-display ${selectedColor === "Midnight Black" ? "jet" : ""}`}>
               <div className="dl-color-watermark"><span>{colors[selectedColor].watermark[0]}</span><span>{colors[selectedColor].watermark[1]}</span></div>
@@ -428,7 +437,7 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
 
       <section className="dl-features-section" id="dl-features">
         <div className="dl-container">
-          <div className="dl-section-heading centered"><Heading>More than a fitness tracker.</Heading><p>PACE AR makes staying active feel less like a routine—and more like an adventure.</p></div>
+          <div className="dl-section-heading centered"><Heading>More than a fitness tracker.</Heading><p>PACE AR makes staying active feel less like a routine and more like an adventure.</p></div>
           <div className={`dl-editorial-grid ${activeFeature !== null ? "expanded" : ""}`}>
             <button className={`dl-editorial-card hardware ${activeFeature === 0 ? "active" : ""}`} onClick={() => setActiveFeature(activeFeature === 0 ? null : 0)}>
               <div className="dl-editorial-hardware">
@@ -445,14 +454,14 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
               <small>Click or hover to expand</small>
             </button>
             <button className={`dl-editorial-card quests ${activeFeature === 1 ? "active" : ""}`} onClick={() => setActiveFeature(activeFeature === 1 ? null : 1)}>
-              <span>02 / AR Quests</span>
-              <div className="dl-quest-ticket"><span>QUEST CARD</span><strong>Find your<br />pace.</strong><b>+250 XP</b></div>
+              
+              <div className="dl-quest-ticket"><img src="/assets/quest-crystal.svg" alt="Violet crystal AR quest card with scanning frame" /></div>
               <div className="dl-card-hover-details"><div><strong>AR card scanner</strong><small>Recognizes physical quest cards.</small></div><div><strong>Guided challenges</strong><small>Clear movement instructions.</small></div><div><strong>Instant sync</strong><small>Sends the quest to your band.</small></div></div>
               <div className="dl-editorial-copy"><Heading level={3}>Turn movement<br />into quests.</Heading><p>{featureModes[1][1]}</p></div>
               <small>Click or hover to expand</small>
             </button>
             <button className={`dl-editorial-card progress ${activeFeature === 2 ? "active" : ""}`} onClick={() => setActiveFeature(activeFeature === 2 ? null : 2)}>
-              <span>03 / Momentum</span>
+              
               <div className="dl-progress-visual"><i>82%</i><div><span><b>3,480 XP</b><em>5,000</em></span><strong /></div><small>5K</small><small>7D</small><small>AR</small></div>
               <div className="dl-card-hover-details"><div><strong>XP progress</strong><small>See every completed challenge add up.</small></div><div><strong>Achievement badges</strong><small>Collect meaningful fitness milestones.</small></div><div><strong>Daily momentum</strong><small>Keep habits visible and rewarding.</small></div></div>
               <div className="dl-editorial-copy"><Heading level={3}>Progress you can feel.</Heading><p>{featureModes[2][1]}</p></div>
@@ -530,7 +539,7 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
 
       <section className="dl-final-cta">
         <div className="dl-container">
-          <div><div className="dl-eyebrow">Your next quest starts here</div><Heading>Ready to level up<br />your walk?</Heading><button onClick={onBuy}><img src="/assets/official/pace-ar-cart-icon.svg" alt="" />Buy PACE AR · ₱2,999</button></div>
+          <div><Heading>Ready to level up<br />your walk?</Heading><button onClick={onBuy}><img src="/assets/official/pace-ar-cart-icon.svg" alt="" />Buy PACE AR | ₱2,999</button></div>
           <div className="dl-cta-orbit"><svg className="cta-orbit-ring" viewBox="0 0 520 330" preserveAspectRatio="none" aria-hidden="true">
             <ellipse className="cta-orbit-track" cx="260" cy="165" rx="258" ry="163" pathLength="100" /><OrbitComet />
           </svg><svg className="cta-orbit-ring cta-orbit-front" viewBox="0 0 520 330" preserveAspectRatio="none" aria-hidden="true">
@@ -545,9 +554,9 @@ function DesktopLanding({ selectedColor, setSelectedColor, openFaq, setOpenFaq, 
         <div className="dl-footer-brand"><a className="dl-footer-identity" href="#dl-overview"><Logo /><Heading level={3}>TrailQuest Inc.</Heading></a><p>Turn every walk into an adventure with fitness gamified.</p></div>
         <div><span>Explore</span>{[["Overview", "dl-overview"], ["Features", "dl-features"], ["How It Works", "dl-how"], ["Colors", "dl-colors"], ["FAQ", "dl-faq"]].map(([label, id]) => <a href={`#${id}`} key={id}>{label}</a>)}</div>
         <div><span>About this project</span><p className="footer-note">PACE AR is a conceptual fitness product by TrailQuest. Campaign personas, reviews and activity figures are illustrative.</p></div>
-        <div><span>Contact</span><a href="mailto:help@trailquest.com"><img src="/assets/official/pace-ar-email-icon.svg" alt="" />help@trailquest.com</a><a href="https://www.trailquest.com"><img src="/assets/official/pace-ar-web-icon.svg" alt="" />www.trailquest.com</a></div>
+        <div><span>Contact</span><a href="mailto:help@trailquest.com"><img src="/assets/official/pace-ar-email-icon.svg" alt="" />help@trailquest.com</a><a href="https://www.trailquest.com"><img src="/assets/official/pace-ar-web-icon.svg" alt="" />www.trailquest.com</a><a href="https://www.facebook.com/profile.php?id=61595797881562" target="_blank" rel="noopener noreferrer"><img src="/assets/official/pace-ar-fb-icon.svg" alt="" />FB: TrailQuest Inc</a><a href="https://www.instagram.com/trailquest.inc/" target="_blank" rel="noopener noreferrer"><img src="/assets/official/pace-ar-ig-icon.svg" alt="" />IG: @trailquest.inc</a></div>
       </div>
-      <div className="dl-footer-bottom"><span>Copyright © 2026 TrailQuest Inc.</span><div><span>Academic prototype · No real purchases</span><a href="#dl-overview">Back to top ↑</a></div></div>
+      <div className="dl-footer-bottom"><span>Copyright © 2026 TrailQuest Inc.</span><div><a href="#dl-overview">Back to top ↑</a></div></div>
     </footer>
   </div>;
 }
