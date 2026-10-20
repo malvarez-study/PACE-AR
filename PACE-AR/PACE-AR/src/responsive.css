@@ -1,0 +1,666 @@
+.modal-backdrop { z-index: 1000; }
+.inline-confirmation { padding: 24px 0; display: grid; gap: 20px; }
+.inline-confirmation h3 { font-size: 30px; }
+.demo-label { display: block; margin-top: 14px; color: #777; font-size: 12px; line-height: 1.6; }
+.dl-footer .footer-note { max-width: 240px; font-size: 12px; color: #999; }
+.skip-link { position: fixed; z-index: 2000; top: 8px; left: 8px; padding: 12px; background: #fff; color: #111; transform: translateY(-160%); }
+.skip-link:focus { transform: none; }
+@media (max-width: 640px) {
+ .dl-container { width: calc(100% - 40px); }
+ .dl-navbar nav { width: calc(100% - 32px); min-height: 110px; grid-template-columns: 1fr auto; gap: 10px; padding: 12px 0; }
+ .dl-brand strong { font-size: 12px; }
+ .dl-buy { min-height: 40px; padding: 0 15px; font-size: 11px; }
+ .dl-nav-links { grid-row: 2; grid-column: 1 / -1; justify-content: space-between; gap: 10px; width: 100%; }
+ .dl-nav-links a { font-size: 10px; white-space: nowrap; }
+ .desktop-landing section { scroll-margin-top: 125px; }
+ .dl-hero { padding: 160px 0 30px; }
+ .dl-hero-grid { min-height: auto; grid-template-columns: 1fr; gap: 10px; }
+ .dl-hero h1 { font-size: clamp(60px, 17vw, 86px); }
+ .dl-hero-copy > p { font-size: 15px; margin: 24px 0; }
+ .dl-actions { flex-wrap: wrap; gap: 10px; }
+ .dl-actions button, .dl-actions a { min-height: 46px; padding: 0 18px; font-size: 12px; }
+ .dl-hero-visual { height: 440px; width: 100%; max-width: 400px; margin: auto; }
+ .dl-hero-phone { width: 420px; left: -65px; top: -10px; }
+ .dl-hero-watch { width: 250px; right: -20px; top: 95px; }
+ .dl-hero-glow { width: 380px; height: 380px; }
+ .dl-goal-badge { right: 0; top: 9%; }
+ .dl-colors-section, .dl-features-section, .dl-personas, .dl-how-section, .dl-benefits, .dl-reviews, .dl-faq { padding: 64px 0; }
+ .dl-section-heading { margin-bottom: 30px; }
+ .dl-section-heading h2, .dl-faq-grid h2 { font-size: 40px; }
+ .dl-section-heading p { font-size: 14px; }
+ .dl-color-layout { display: flex; flex-direction: column-reverse; gap: 20px; }
+ .dl-color-display { width: 100%; height: 360px; }
+ .dl-color-display > img { width: 360px; height: 360px; max-width: 110%; }
+ .dl-color-display::before { width: 300px; height: 300px; }
+ .dl-color-watermark { font-size: 54px; }
+ .dl-color-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+ .dl-color-controls > button:not(.dl-color-buy) { padding: 13px; min-height: 52px; }
+ .dl-color-controls span { font-size: 12px; }
+ .dl-color-buy { grid-column: 1/-1; }
+ .dl-metrics { gap: 8px; margin-top: 32px; }
+ .dl-metrics article { padding: 12px 6px; min-height: 90px; }
+ .dl-metrics span { font-size: 23px; }
+ .dl-metrics p { font-size: 10px; }
+ .dl-editorial-grid, .dl-editorial-grid.expanded { display: flex; flex-direction: column; gap: 14px; }
+ .dl-editorial-card, .dl-editorial-grid.expanded .dl-editorial-card:not(.active) { min-height: 350px; opacity: 1; }
+ .dl-editorial-card.hardware { min-height: 500px; }
+ .dl-editorial-grid.expanded .dl-editorial-card.active { min-height: 520px; }
+ .dl-editorial-hardware { inset: 50px 10px 120px; }
+ .dl-editorial-hardware > img { width: 200px; height: 320px; }
+ .dl-editorial-hardware .callout strong { font-size: 8px; }
+ .dl-editorial-hardware .callout small { max-width: 85px; font-size: 7px; }
+ .dl-editorial-hardware .callout::after { width: 15px; }
+ .dl-editorial-copy h3, .dl-editorial-grid.expanded .dl-editorial-copy h3 { font-size: 27px; }
+ .dl-editorial-copy p { font-size: 12px; }
+ .dl-card-hover-details { inset: 50px 20px 130px; }
+ .dl-card-hover-details strong { font-size: 12px; }
+ .dl-card-hover-details small { font-size: 10px; }
+ .dl-persona-grid, .dl-steps, .dl-review-grid, .dl-faq-grid { grid-template-columns: 1fr; gap: 24px; }
+ .dl-persona-grid img { height: 340px; }
+ .dl-persona-grid article > div { padding: 24px; }
+ .dl-persona-grid h3 { font-size: 28px; }
+ .dl-persona-grid p { font-size: 13px; }
+ .dl-steps::before { display: none; }
+ .dl-steps article { padding: 16px 0; }
+ .dl-steps p { font-size: 14px; }
+ .dl-benefit-grid { grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: minmax(230px,auto); gap: 12px; }
+ .dl-benefit-grid article { padding: 20px; }
+ .dl-benefit-grid article.wide { grid-column: span 2; }
+ .dl-benefit-grid h3 { font-size: 19px; line-height: 1.1; }
+ .dl-benefit-grid p { font-size: 12px; }
+ .dl-benefit-grid img { margin-top: 20px; margin-bottom: 24px; }
+ .dl-review-grid article { min-height: 300px; padding: 28px; }
+ .dl-review-grid article > p { font-size: 18px; margin-top: 30px; }
+ .dl-faq-grid > div:first-child { position: static; }
+ .dl-faq article button { padding: 22px 0; font-size: 15px; }
+ .dl-faq article.open > p { font-size: 14px; max-height: 400px; }
+ .dl-final-cta > .dl-container { grid-template-columns: 1fr; gap: 0; padding-top: 64px; min-height: auto; }
+ .dl-final-cta h2 { font-size: 45px; }
+ .dl-final-cta button { font-size: 13px; padding: 0 22px; }
+ .dl-cta-orbit { height: 350px; }
+ .dl-cta-orbit img { width: 280px; height: 330px; }
+ .dl-cta-orbit::before { width: 270px; height: 220px; }
+ .dl-footer { padding-top: 50px; }
+ .dl-footer > .dl-container { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+ .dl-footer-brand { grid-column: 1/-1; }
+ .dl-footer a, .dl-footer-brand p { font-size: 12px; overflow-wrap: anywhere; }
+ .dl-footer-bottom { width: calc(100% - 40px); flex-direction: column; align-items: start; gap: 18px; font-size: 10px; }
+ .dl-footer-bottom div { flex-wrap: wrap; gap: 15px; }
+ .modal-backdrop { padding: 12px; }
+ .checkout-modal { padding: 24px 18px; border-radius: 20px; max-height: 92dvh; }
+ .modal-head h2 { font-size: 32px; }
+ .checkout-layout, .form-fields { grid-template-columns: 1fr; }
+ .field.full { grid-column: auto; }
+ .payment-options > div { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+ html { scroll-behavior: auto; }
+ *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+.dl-actions .hero-buy { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 0 26px; white-space: nowrap; }
+.dl-actions .hero-buy svg { flex-shrink: 0; }
+
+/* White artwork for the two purple feature cards. */
+.dl-benefit-grid img[src$="pace-ar-heart-rate-monitoring-icon.svg"],
+.dl-benefit-grid img[src$="pace-ar-no-monthly-subscription-icon.svg"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Remove the decorative eyebrow dash shown in the reference. */
+.dl-eyebrow::before { content: none; display: none; }
+
+/* Center the remaining watch after removing the introduction phone image. */
+.dl-hero-watch { left: 50%; right: auto; margin-left: -215px; }
+@media (min-width: 641px) and (max-width: 900px) { .dl-hero-watch { margin-left: -150px; } }
+@media (max-width: 640px) { .dl-hero-watch { margin-left: -125px; top: 55px; } }
+
+/* Give the hardware watch and specifications more presence. */
+.dl-editorial-hardware > img {
+  max-width: none;
+  transform: translate(-50%, -50%) scale(1.8);
+}
+.dl-editorial-hardware .callout { white-space: normal; max-width: 135px; }
+.dl-editorial-hardware .callout strong { font-size: 13px; line-height: 1.3; color: #fff; }
+.dl-editorial-hardware .callout small { font-size: 11px; line-height: 1.5; color: #aaa5b2; }
+.dl-editorial-grid.expanded .hardware .dl-editorial-hardware { inset: 60px 60px 140px; }
+.dl-editorial-grid.expanded .hardware .dl-editorial-hardware > img { width: 440px; height: 500px; }
+.dl-editorial-grid.expanded .hardware .callout { max-width: 220px; }
+.dl-editorial-grid.expanded .hardware .callout strong { font-size: 18px; }
+.dl-editorial-grid.expanded .hardware .callout small { font-size: 14px; max-width: 220px; }
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-editorial-hardware .callout { max-width: 90px; }
+ .dl-editorial-hardware .callout strong { font-size: 10px; }
+ .dl-editorial-hardware .callout small { font-size: 9px; }
+ .dl-editorial-hardware .callout::after { display: none; }
+ .dl-editorial-grid.expanded .hardware .dl-editorial-hardware { inset: 50px 25px 140px; }
+ .dl-editorial-grid.expanded .hardware .callout { max-width: 145px; }
+ .dl-editorial-grid.expanded .hardware .callout strong { font-size: 15px; }
+ .dl-editorial-grid.expanded .hardware .callout small { font-size: 12px; }
+}
+@media (max-width: 640px) {
+ .dl-editorial-card.hardware,
+ .dl-editorial-grid.expanded .dl-editorial-card.hardware.active { min-height: 860px; }
+ .dl-editorial-hardware,
+ .dl-editorial-grid.expanded .hardware .dl-editorial-hardware {
+   inset: 20px 20px 145px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; align-content: start;
+ }
+ .dl-editorial-hardware > img,
+ .dl-editorial-grid.expanded .hardware .dl-editorial-hardware > img {
+   position: relative; grid-column: 1/-1; width: 100%; height: 330px;
+   left: auto; top: auto; transform: scale(1.8); margin-bottom: 28px;
+ }
+ .dl-editorial-hardware .callout,
+ .dl-editorial-grid.expanded .hardware .callout {
+   position: static; max-width: none; opacity: 1; transform: none;
+ }
+ .dl-editorial-hardware .callout strong,
+ .dl-editorial-grid.expanded .hardware .callout strong { font-size: 14px; }
+ .dl-editorial-hardware .callout small,
+ .dl-editorial-grid.expanded .hardware .callout small { font-size: 12px; max-width: none; }
+ .dl-editorial-hardware .callout::after { display: none; }
+}
+
+/* Soft violet light ties each specification to the product. */
+.dl-editorial-hardware .callout::after {
+  height: 2px;
+  border-top: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9270d0, #e7d9ff);
+  box-shadow: 0 0 5px #b58be6, 0 0 12px #9c6bd080, 0 0 22px #8c5ec03d;
+}
+.dl-editorial-hardware .callout:nth-of-type(n+4)::after {
+  background: linear-gradient(90deg, #e7d9ff, #9270d0);
+}
+@media (prefers-reduced-motion: no-preference) {
+ .dl-editorial-card:hover .callout::after,
+ .dl-editorial-card:focus-visible .callout::after,
+ .dl-editorial-card.active .callout::after { animation: connector-glow 3.5s ease-in-out infinite; }
+ @keyframes connector-glow {
+  0%, 100% { opacity: .72; }
+  50% { opacity: 1; }
+ }
+}
+
+/* Rounded signal paths draw and carry light from each label to the watch. */
+.dl-editorial-hardware .callout::after { display: none; }
+.hardware-connectors { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; opacity: 0; }
+.hardware-connectors path { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.connector-track { stroke: #b894e7; stroke-width: 1.5; stroke-dasharray: 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 4px #a477d8); }
+.connector-pulse { stroke: #f3e9ff; stroke-width: 2.5; stroke-dasharray: 4 196; stroke-dashoffset: 4; opacity: 0; filter: drop-shadow(0 0 4px #d5acff) drop-shadow(0 0 8px #ad78ef); }
+.hardware:hover .hardware-connectors, .hardware:focus-visible .hardware-connectors, .hardware.active .hardware-connectors { opacity: 1; }
+.hardware:hover .connector-track, .hardware:focus-visible .connector-track, .hardware.active .connector-track {
+ animation: signal-draw 3.2s ease-out var(--connector-delay) both;
+}
+.hardware:hover .connector-pulse, .hardware:focus-visible .connector-pulse, .hardware.active .connector-pulse {
+ animation: signal-travel 3.8s linear infinite; animation-delay: calc(3.2s + var(--connector-delay));
+}
+@keyframes signal-draw { from { stroke-dashoffset: 100; opacity: 0; } to { stroke-dashoffset: 0; opacity: .85; } }
+@keyframes signal-travel { 0% { stroke-dashoffset: 4; opacity: 0; } 12% { opacity: 1; } 85% { opacity: 1; } 100% { stroke-dashoffset: -100; opacity: 0; } }
+@media (max-width: 900px) { .hardware-connectors { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+ .hardware-connectors .connector-track { animation: none !important; stroke-dashoffset: 0; opacity: .85; }
+ .hardware-connectors .connector-pulse { animation: none !important; opacity: 0; }
+}
+
+/* A connected, sequential journey: Scan → Move → Earn. */
+.dl-how-section { position: relative; isolation: isolate; }
+.dl-moving-light { pointer-events: none; z-index: -1; }
+.dl-steps { --step-gap: 22px; gap: var(--step-gap); }
+.dl-steps article > span { position: relative; z-index: 3; margin-inline: auto; font-size: 12px; font-weight: 700; box-shadow: 0 0 18px #a788e615; }
+.dl-steps::before, .dl-steps::after {
+ content: ""; position: absolute; display: block;
+ left: calc((100% - var(--step-gap) * 2) / 6);
+ right: calc((100% - var(--step-gap) * 2) / 6);
+ top: 27px; height: 2px; border: 0; pointer-events: none;
+}
+.dl-steps::before { background: #a788e64d; }
+.dl-steps::after { background: linear-gradient(90deg, transparent, #b18cdd 38%, #f3e7ff 50%, #b18cdd 62%, transparent); background-size: 200% 100%; box-shadow: 0 0 8px #a788e655; transform: scaleX(0); transform-origin: left; }
+.dl-step-visual { transition: border-color .35s, box-shadow .35s, transform .35s; }
+.dl-steps article:hover .dl-step-visual { border-color: #b48bdd80; box-shadow: 0 12px 36px #8050bc25, inset 0 0 25px #a788e610; transform: translateY(-5px); }
+.dl-step-visual.scan::after { content: ""; position: absolute; width: 56%; height: 2px; top: 22%; left: 22%; background: linear-gradient(90deg, transparent, #d9b7ff, transparent); box-shadow: 0 0 12px #a788e6; opacity: .7; }
+.dl-step-visual.earn > i { position: relative; }
+.dl-step-visual.earn > i::after { content: ""; position: absolute; inset: -9px; border: 1px solid #bb97ec80; border-radius: 50%; }
+@media (prefers-reduced-motion: no-preference) {
+ .how-in-view .dl-steps::after { animation: journey-connect 2.4s ease-out both, journey-signal 5s linear 2.4s infinite; }
+ .how-in-view .dl-steps article { animation: step-arrive .8s ease-out both; }
+ .how-in-view .dl-steps article:nth-child(2) { animation-delay: .25s; }
+ .how-in-view .dl-steps article:nth-child(3) { animation-delay: .5s; }
+ .how-in-view .dl-steps article > span { animation: step-beacon 6s ease-in-out infinite; }
+ .how-in-view .dl-steps article:nth-child(2) > span { animation-delay: 2s; }
+ .how-in-view .dl-steps article:nth-child(3) > span { animation-delay: 4s; }
+ .how-in-view .scan::after { animation: quest-scan 3.5s ease-in-out infinite; }
+ .how-in-view .move > i { animation: route-beacon 3s ease-in-out infinite; }
+ .how-in-view .move > i:nth-child(2) { animation-delay: 1s; }
+ .how-in-view .move > i:nth-child(3) { animation-delay: 2s; }
+ .how-in-view .earn > i::after { animation: reward-ring 3.5s ease-out infinite; }
+}
+@keyframes journey-connect { to { transform: scaleX(1); } }
+@keyframes journey-signal { from { background-position: 200% 0; } to { background-position: 0% 0; } }
+@keyframes step-arrive { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes step-beacon { 0%, 28%, 100% { border-color: #67557d; box-shadow: 0 0 0 #a788e600; } 14% { border-color: #d3b4ff; box-shadow: 0 0 22px #a788e655; color: #fff; } }
+@keyframes quest-scan { 0%, 100% { top: 22%; opacity: .3; } 50% { top: 77%; opacity: 1; } }
+@keyframes route-beacon { 0%, 100% { opacity: .4; scale: .85; } 50% { opacity: 1; scale: 1.25; } }
+@keyframes reward-ring { from { scale: .95; opacity: .8; } to { scale: 1.35; opacity: 0; } }
+@media (min-width: 641px) and (max-width: 900px) { .dl-steps { --step-gap: 12px; } }
+@media (max-width: 640px) {
+ .dl-steps { --step-gap: 28px; }
+ .dl-steps::before, .dl-steps::after { display: none; }
+ .dl-steps article { padding: 0 0 4px 76px; }
+ .dl-steps article > span { position: absolute; left: 0; top: 0; margin: 0; }
+ .dl-steps article:not(:last-child)::before {
+  content: ""; position: absolute; left: 27px; top: 56px; width: 2px;
+  height: calc(100% + var(--step-gap) - 56px);
+  background: linear-gradient(#b28cde, #ac82de66, #b28cde);
+  box-shadow: 0 0 7px #a788e644;
+ }
+ .dl-steps .dl-step-visual { margin: 0 0 24px; height: 220px; }
+ .dl-steps h3 { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .dl-steps::after { transform: scaleX(1); } }
+
+/* Each number and illustration share a twelve-second sequence: four seconds per step. */
+.dl-steps article { --step-delay: 0s; }
+.dl-steps article:nth-child(2) { --step-delay: 4s; }
+.dl-steps article:nth-child(3) { --step-delay: 8s; }
+.dl-step-visual.scan::after { opacity: 0; }
+.dl-step-visual.earn > i::after { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+ .how-in-view .dl-steps article:nth-child(n) > span {
+   animation: synced-step-number 12s ease-in-out var(--step-delay) infinite backwards;
+ }
+ .how-in-view .dl-steps article .dl-step-visual {
+   animation: synced-step-card 12s ease-in-out var(--step-delay) infinite backwards;
+ }
+ .how-in-view .dl-steps article .dl-step-visual.scan::after {
+   animation: synced-step-scan 12s ease-in-out var(--step-delay) infinite backwards;
+ }
+ .how-in-view .dl-steps article .dl-step-visual.move > i:nth-child(n) {
+   animation: synced-step-activity 12s ease-in-out var(--step-delay) infinite backwards;
+ }
+ .how-in-view .dl-steps article .dl-step-visual.earn > i::after {
+   animation: synced-step-reward 12s ease-out var(--step-delay) infinite backwards;
+ }
+ .how-in-view .dl-steps article .dl-step-visual.earn > i {
+   animation: synced-step-medal 12s ease-in-out var(--step-delay) infinite backwards;
+ }
+}
+@keyframes synced-step-number {
+ 0%, 33.333%, 100% { border-color: #67557d; box-shadow: 0 0 0 #a788e600; color: #c1a9e2; }
+ 8%, 24% { border-color: #d3b4ff; box-shadow: 0 0 22px #a788e655; color: #fff; }
+}
+@keyframes synced-step-card {
+ 0%, 33.333%, 100% { border-color: #ffffff14; box-shadow: 0 0 0 #a788e600; }
+ 8%, 24% { border-color: #b48bdd80; box-shadow: 0 0 26px #8050bc25, inset 0 0 25px #a788e610; }
+}
+@keyframes synced-step-scan {
+ 0% { top: 22%; opacity: 0; }
+ 5% { opacity: 1; }
+ 27% { top: 77%; opacity: 1; }
+ 33.333%, 100% { top: 77%; opacity: 0; }
+}
+@keyframes synced-step-activity {
+ 0%, 33.333%, 100% { opacity: .4; scale: .85; }
+ 8%, 24% { opacity: 1; scale: 1.25; }
+ 16% { opacity: .65; scale: 1; }
+}
+@keyframes synced-step-reward {
+ 0% { scale: .95; opacity: 0; }
+ 5% { opacity: .9; }
+ 29% { scale: 1.4; opacity: 0; }
+ 33.333%, 100% { scale: 1.4; opacity: 0; }
+}
+@keyframes synced-step-medal {
+ 0%, 33.333%, 100% { scale: 1; box-shadow: 0 0 25px #a788e630; }
+ 12%, 22% { scale: 1.06; box-shadow: 0 0 48px #a788e680; }
+}
+
+
+/* Scan down and back up within step 01; play the reward twice in step 03. */
+@keyframes synced-step-scan {
+ 0% { top: 22%; opacity: 0; }
+ 3% { top: 22%; opacity: 1; }
+ 16.666% { top: 77%; opacity: 1; }
+ 30% { top: 22%; opacity: 1; }
+ 33.333%, 100% { top: 22%; opacity: 0; }
+}
+@keyframes synced-step-reward {
+ 0%, 16.666% { scale: .95; opacity: 0; }
+ 2%, 19% { scale: .98; opacity: .9; }
+ 15%, 32%, 33.333%, 100% { scale: 1.4; opacity: 0; }
+}
+@keyframes synced-step-medal {
+ 0%, 16.666%, 33.333%, 100% { scale: 1; box-shadow: 0 0 25px #a788e630; }
+ 6%, 11%, 23%, 28% { scale: 1.06; box-shadow: 0 0 48px #a788e680; }
+}
+
+/* Hover or keyboard focus selects the step; autoplay resumes from that selection. */
+.how-in-view .dl-steps article:nth-child(n),
+.how-in-view .dl-steps article:nth-child(n) > span,
+.how-in-view .dl-steps article .dl-step-visual,
+.how-in-view .dl-steps article .dl-step-visual.scan::after,
+.how-in-view .dl-steps article .dl-step-visual.move > i:nth-child(n),
+.how-in-view .dl-steps article .dl-step-visual.earn > i,
+.how-in-view .dl-steps article .dl-step-visual.earn > i::after { animation: none; }
+.dl-steps article:focus-visible { outline: 2px solid #b48bdd; outline-offset: 8px; border-radius: 24px; }
+.dl-steps article.is-current > span { border-color: #d3b4ff; color: #fff; box-shadow: 0 0 22px #a788e655; }
+.dl-steps article.is-current .dl-step-visual { border-color: #b48bdd80; box-shadow: 0 0 26px #8050bc25, inset 0 0 25px #a788e610; }
+@media (prefers-reduced-motion: no-preference) {
+ .how-in-view .dl-steps article.is-current .dl-step-visual.scan::after { animation: selected-scan 4s ease-in-out infinite; }
+ .how-in-view .dl-steps article.is-current .dl-step-visual.move > i:nth-child(n) { animation: selected-activity 4s ease-in-out infinite; }
+ .how-in-view .dl-steps article.is-current .dl-step-visual.earn > i { animation: selected-medal 4s ease-in-out infinite; }
+ .how-in-view .dl-steps article.is-current .dl-step-visual.earn > i::after { animation: selected-reward 4s ease-out infinite; }
+}
+@keyframes selected-scan {
+ 0%, 100% { top: 22%; opacity: 0; }
+ 9% { top: 22%; opacity: 1; }
+ 50% { top: 77%; opacity: 1; }
+ 90% { top: 22%; opacity: 1; }
+}
+@keyframes selected-activity { 0%, 100% { opacity: .4; scale: .85; } 24%, 72% { opacity: 1; scale: 1.25; } 48% { opacity: .65; scale: 1; } }
+@keyframes selected-reward { 0%, 50% { scale: .95; opacity: 0; } 6%, 57% { scale: .98; opacity: .9; } 45%, 96%, 100% { scale: 1.4; opacity: 0; } }
+@keyframes selected-medal { 0%, 50%, 100% { scale: 1; box-shadow: 0 0 25px #a788e630; } 18%, 33%, 69%, 84% { scale: 1.06; box-shadow: 0 0 48px #a788e680; } }
+
+/* Finish buttons fill left to right with their matching band color. */
+.dl-color-controls > button:not(.dl-color-buy) {
+ position: relative; isolation: isolate; overflow: hidden; background: #ffffff70;
+ border-color: #dedbd8; transition: color .25s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.dl-color-controls > button:not(.dl-color-buy)::before {
+ content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+ background: var(--finish-color); transform: scaleX(0); transform-origin: left;
+ transition: transform .5s cubic-bezier(.22,.68,.25,1);
+}
+.dl-color-controls > button:not(.dl-color-buy):is(:hover, :focus-visible, .active)::before { transform: scaleX(1); }
+.dl-color-controls > button:not(.dl-color-buy):is(:hover, :focus-visible, .active) {
+ color: #fff; border-color: var(--finish-color); background: #ffffff70;
+ box-shadow: 0 8px 20px #16161615;
+}
+.dl-color-controls > button:not(.dl-color-buy) i { flex-shrink: 0; box-shadow: 0 0 0 1px #ffffff88; }
+.dl-color-controls > button:not(.dl-color-buy) span { position: relative; }
+
+
+
+
+/* Slightly translucent finish fills keep the controls softer. */
+.dl-color-controls > button:not(.dl-color-buy)::before { opacity: .85; }
+.dl-color-controls > button:not(.dl-color-buy):is(:hover, :focus-visible, .active) {
+ border-color: color-mix(in srgb, var(--finish-color) 70%, transparent);
+ box-shadow: 0 6px 18px #1616160d;
+}
+
+/* Tabular digit reels roll into the original metric values on first reveal. */
+.dl-metrics .rolling-metric { display: inline-flex; align-items: baseline; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rolling-metric .metric-digit { display: inline-block; height: 1.1em; width: .65em; overflow: hidden; font-style: normal; line-height: 1.1; vertical-align: bottom; }
+.rolling-metric .metric-reel { display: flex; flex-direction: column; font-weight: inherit; transition: transform 2.1s cubic-bezier(.16,.7,.2,1); }
+.rolling-metric .metric-reel em { display: block; height: 1.1em; min-height: 1.1em; line-height: 1.1; font-style: normal; text-align: center; }
+.rolling-metric .metric-char { font-style: normal; line-height: 1.1; white-space: pre; }
+@media (prefers-reduced-motion: reduce) { .rolling-metric .metric-reel { transition: none; } }
+
+/* Mirror the introduction watch’s gentle five-second floating motion. */
+@media (prefers-reduced-motion: no-preference) {
+ .dl-cta-orbit img { animation: dl-watch-float 5s ease-in-out infinite; }
+}
+
+/* Watch and orbit move together; a violet light traces the ellipse. */
+.dl-cta-orbit::before { display: none; }
+.dl-cta-orbit img { animation: none; }
+.cta-orbit-ring { position: absolute; width: 520px; height: 330px; transform: rotate(-18deg); overflow: visible; pointer-events: none; }
+.cta-orbit-ring ellipse { fill: none; vector-effect: non-scaling-stroke; }
+.cta-orbit-track { stroke: #a788e647; stroke-width: 1.5; }
+.cta-orbit-halo { stroke: #a788e6; stroke-width: 7; stroke-dasharray: 2 98; opacity: .55; filter: blur(5px); }
+.cta-orbit-trail { stroke: #c7a4f3; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 98; filter: drop-shadow(0 0 5px #b887fa); }
+.cta-orbit-light { stroke: #f7edff; stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: .2 99.8; filter: drop-shadow(0 0 4px #debaff) drop-shadow(0 0 10px #ad79ed); }
+@media (prefers-reduced-motion: no-preference) {
+ .dl-cta-orbit { animation: dl-watch-float 5s ease-in-out infinite; }
+ .cta-orbit-halo, .cta-orbit-trail, .cta-orbit-light { animation: cta-orbit-travel 8s linear infinite; }
+}
+@keyframes cta-orbit-travel { to { stroke-dashoffset: -100; } }
+@media (min-width: 641px) and (max-width: 900px) { .cta-orbit-ring { width: 285px; height: 210px; } }
+@media (max-width: 640px) { .cta-orbit-ring { width: 270px; height: 220px; } }
+
+/* Match the hardware connectors’ fine violet line and traveling signal. */
+.cta-orbit-ring .cta-orbit-track {
+ stroke: #b894e7; stroke-width: 1.5;
+ filter: drop-shadow(0 0 4px #a477d8);
+}
+.cta-orbit-ring .cta-orbit-trail {
+ stroke: #f3e9ff; stroke-width: 2.5; stroke-linecap: round;
+ stroke-dasharray: 4 196; stroke-dashoffset: 4; opacity: 0;
+ filter: drop-shadow(0 0 4px #d5acff) drop-shadow(0 0 8px #ad78ef);
+ animation: none;
+}
+.cta-orbit-ring .cta-orbit-halo { stroke-dasharray: 4 196; stroke-dashoffset: 4; opacity: 0; animation: none; }
+.cta-orbit-ring .cta-orbit-light { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+ .cta-orbit-ring .cta-orbit-track { stroke-dasharray: 100; stroke-dashoffset: 100; }
+ .orbit-in-view .cta-orbit-track { animation: signal-draw 3.2s ease-out both; }
+ .orbit-in-view .cta-orbit-trail { animation: signal-travel 3.8s linear 3.2s infinite; }
+ .orbit-in-view .cta-orbit-halo { animation: signal-travel 3.8s linear 3.2s infinite; }
+}
+
+/* The near arc passes over the lower strap; the far arc stays behind. */
+.dl-cta-orbit { animation: none; isolation: isolate; }
+.cta-orbit-ring { z-index: 1; }
+.dl-cta-orbit img { z-index: 2; }
+.cta-orbit-ring.cta-orbit-front { z-index: 3; clip-path: inset(50% -6% -6% -6%); }
+.cta-orbit-ring .cta-orbit-track { stroke: #b894e7b3; stroke-width: 1.4; filter: drop-shadow(0 0 3px #a477d880); }
+.cta-orbit-ring .cta-orbit-halo { stroke: #a788e666; stroke-width: 5; filter: blur(3px); }
+.cta-orbit-ring .cta-orbit-trail { stroke-width: 2; filter: drop-shadow(0 0 3px #d5acff) drop-shadow(0 0 6px #ad78ef99); }
+@media (prefers-reduced-motion: no-preference) {
+ .dl-cta-orbit img { animation: dl-watch-float 5s ease-in-out infinite; }
+ .cta-orbit-ring { animation: independent-orbit-drift 7s ease-in-out infinite; }
+ .orbit-in-view .cta-orbit-trail, .orbit-in-view .cta-orbit-halo { animation-duration: 6.5s; }
+}
+@keyframes independent-orbit-drift {
+ 0%, 100% { transform: translateY(3px) rotate(-18deg); }
+ 50% { transform: translateY(-5px) rotate(-16deg); }
+}
+
+
+/* A slightly stronger orbit with a longer, softly luminous signal. */
+.cta-orbit-ring .cta-orbit-track { stroke-width: 2; filter: drop-shadow(0 0 4px #a477d880); }
+.cta-orbit-ring .cta-orbit-trail {
+ stroke-width: 2.8; stroke-dasharray: 10 190;
+ filter: drop-shadow(0 0 4px #d5acff) drop-shadow(0 0 8px #ad78ef99);
+}
+.cta-orbit-ring .cta-orbit-halo {
+ stroke-width: 7; stroke-dasharray: 10 190; filter: blur(4px);
+}
+@media (prefers-reduced-motion: no-preference) {
+ .orbit-in-view .cta-orbit-trail, .orbit-in-view .cta-orbit-halo { animation-name: orbit-long-signal; }
+}
+@keyframes orbit-long-signal {
+ 0% { stroke-dashoffset: 10; opacity: 0; }
+ 10% { opacity: 1; }
+ 88% { opacity: 1; }
+ 100% { stroke-dashoffset: -100; opacity: 0; }
+}
+
+/* A separate filled comet travels along the existing orbit without altering it. */
+.orbit-comet-traveler { filter: drop-shadow(0 0 3px #e0bcff) drop-shadow(0 0 7px #ad78efaa); }
+@media (prefers-reduced-motion: reduce) {
+ .orbit-comet-traveler { display: none; }
+}
+
+/* The ring reveal and comet share one distance-based animation clock. */
+.cta-orbit-ring .cta-orbit-track { animation: none; }
+
+/* Tighter section rhythm while retaining space for product motion and callouts. */
+@media (min-width: 901px) {
+ .dl-hero { padding: 128px 0 48px; }
+ .dl-hero-grid { min-height: 620px; }
+ .dl-hero-visual { height: 620px; }
+ .dl-hero-watch { top: 95px; }
+ .dl-colors-section, .dl-features-section, .dl-personas, .dl-how-section, .dl-benefits { padding: 88px 0; }
+ .dl-reviews { padding: 88px 0 64px; }
+ .dl-faq { padding: 64px 0 88px; }
+ .dl-section-heading { margin-bottom: 44px; }
+ .dl-final-cta > .dl-container { min-height: 620px; }
+ .dl-cta-orbit { height: 560px; }
+ .dl-footer { padding-top: 64px; }
+ .dl-footer-bottom { margin-top: 44px; }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-hero { padding: 110px 0 40px; }
+ .dl-hero-grid { min-height: 520px; }
+ .dl-hero-visual { height: 500px; }
+ .dl-hero-watch { top: 95px; }
+ .dl-colors-section, .dl-features-section, .dl-personas, .dl-how-section, .dl-benefits, .dl-reviews { padding: 72px 0; }
+ .dl-faq { padding: 56px 0 72px; }
+ .dl-section-heading { margin-bottom: 36px; }
+ .dl-final-cta > .dl-container { min-height: 520px; }
+ .dl-footer { padding-top: 56px; }
+ .dl-footer-bottom { margin-top: 36px; }
+}
+@media (max-width: 640px) {
+ .dl-hero { padding: 146px 0 24px; }
+ .dl-hero-visual { height: 380px; }
+ .dl-hero-watch { top: 30px; }
+ .dl-colors-section, .dl-features-section, .dl-personas, .dl-how-section, .dl-benefits, .dl-reviews, .dl-faq { padding: 48px 0; }
+ .dl-section-heading { margin-bottom: 32px; }
+ .dl-final-cta > .dl-container { padding-top: 48px; }
+ .dl-footer { padding-top: 48px; }
+ .dl-footer-bottom { margin-top: 32px; }
+}
+
+/* Match visible watch size across differently padded product assets. */
+.dl-color-display { --watch-display-size: 480px; height: 500px; }
+.dl-color-display > img {
+ width: var(--watch-display-size); height: var(--watch-display-size); max-width: none;
+ transform: translate(-50%, -50%);
+ filter: drop-shadow(0 24px 24px rgba(0,0,0,.2));
+}
+.dl-color-display.jet > img {
+ width: calc(var(--watch-display-size) * 1.26); height: calc(var(--watch-display-size) * 1.26);
+ transform: translate(-50%, -50%);
+}
+.dl-color-display::before { width: 440px; height: 440px; }
+.dl-colors-section { padding-block: 72px; }
+.dl-colors-section .dl-section-heading { margin-bottom: 32px; }
+.dl-colors-section .dl-metrics { margin-top: 28px; }
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-color-display { --watch-display-size: 390px; height: 420px; }
+ .dl-color-display::before { width: 360px; height: 360px; }
+ .dl-colors-section { padding-block: 64px; }
+ .dl-colors-section .dl-section-heading { margin-bottom: 28px; }
+}
+@media (max-width: 640px) {
+ .dl-color-display { --watch-display-size: min(330px, 92vw); height: 330px; }
+ .dl-color-display::before { width: 280px; height: 280px; }
+ .dl-color-layout { gap: 12px; }
+ .dl-colors-section { padding-block: 44px; }
+ .dl-colors-section .dl-section-heading { margin-bottom: 24px; }
+ .dl-colors-section .dl-metrics { margin-top: 24px; }
+}
+
+.dl-goal-badge .daily-goal-count { font-variant-numeric: tabular-nums; min-width: 3ch; }
+
+/* Preserve the supplied logo proportions in both brand placements. */
+.logo { width: 36px; height: 54px; padding: 0; border: 0; border-radius: 0; object-fit: contain; letter-spacing: normal; }
+.logo::after { content: none; }
+.dl-brand .logo { width: 30px; height: 44px; }
+.dl-footer-brand .logo { width: 44px; height: 66px; }
+@media (max-width: 900px) {
+ .dl-brand .logo { width: 25px; height: 38px; }
+}
+
+/* Compact brand signature with a balanced footer lockup. */
+.dl-brand { gap: 12px; }
+.dl-brand .logo { width: 28px; height: 42px; flex: 0 0 auto; }
+.dl-brand strong { font-size: 14px; letter-spacing: .1em; }
+.dl-footer-brand .dl-footer-identity { display: inline-flex; align-items: center; gap: 14px; color: #fff; text-decoration: none; }
+.dl-footer-brand .dl-footer-identity .logo { width: 34px; height: 51px; margin: 0; flex: 0 0 auto; }
+.dl-footer-identity h3 { margin: 0; font-size: 20px; line-height: 1.25; letter-spacing: -.03em; }
+.dl-footer-brand p { margin-top: 18px; }
+.dl-brand:focus-visible, .dl-footer-identity:focus-visible { outline: 2px solid #a788e6; outline-offset: 7px; border-radius: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+ .dl-brand .logo, .dl-footer-identity .logo { transition: transform .25s ease, filter .25s ease; }
+ .dl-brand:hover .logo, .dl-footer-identity:hover .logo { transform: translateY(-1px); filter: drop-shadow(0 0 5px #a788e638); }
+}
+@media (max-width: 900px) {
+ .dl-brand { gap: 9px; }
+ .dl-brand .logo { width: 24px; height: 36px; }
+ .dl-brand strong { font-size: 12px; letter-spacing: .08em; }
+ .dl-footer-brand .dl-footer-identity { gap: 10px; }
+ .dl-footer-brand .dl-footer-identity .logo { width: 30px; height: 45px; }
+ .dl-footer-identity h3 { font-size: 18px; }
+}
+
+/* Two-line introduction signature from the supplied type reference. */
+.dl-intro-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 26px; }
+.dl-intro-brand > span { color: #a788e6; font-family: "Golos Text", sans-serif; font-size: 10px; font-weight: 800; line-height: 1.4; letter-spacing: .18em; text-transform: uppercase; }
+.dl-intro-brand > strong { color: #fff; font-family: "Golos Text", sans-serif; font-size: clamp(30px,3vw,42px); font-weight: 800; line-height: 1.05; letter-spacing: .025em; }
+@media (max-width: 900px) {
+ .dl-intro-brand { gap: 5px; margin-bottom: 22px; }
+ .dl-intro-brand > strong { font-size: 32px; }
+}
+@media (max-width: 640px) {
+ .dl-intro-brand > span { font-size: 9px; }
+ .dl-intro-brand > strong { font-size: 30px; }
+}
+
+/* Selected finishes tint the whole section with a restrained color wash. */
+.dl-colors-section {
+ background-color: var(--finish-surface, #e7edf6);
+ background-image: radial-gradient(ellipse at 75% 35%, #ffffff38, transparent 70%);
+ padding-block: 64px;
+}
+.dl-colors-section .dl-color-display::before {
+ background: radial-gradient(circle, #ffffffb3, transparent 70%);
+ background-color: var(--finish-glow);
+ filter: blur(8px);
+}
+.dl-colors-section .dl-section-heading { margin-bottom: 28px; }
+@media (prefers-reduced-motion: no-preference) {
+ .dl-colors-section, .dl-colors-section .dl-color-display::before { transition: background-color .75s cubic-bezier(.22,.61,.36,1); }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-colors-section { padding-block: 56px; }
+ .dl-colors-section .dl-section-heading { margin-bottom: 24px; }
+}
+@media (max-width: 640px) {
+ .dl-colors-section { padding-block: 40px; }
+ .dl-colors-section .dl-section-heading { margin-bottom: 20px; }
+}
+
+/* Longer testimonials use clear headlines, readable quotes, and anchored bylines. */
+.dl-review-grid { align-items: stretch; gap: 18px; }
+.dl-review-grid article { min-height: 0; padding: 28px; }
+.dl-review-grid .dl-review-title { margin: 24px 0 14px; font-family: "Golos Text", sans-serif; font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -.025em; color: inherit; }
+.dl-review-grid article > p { margin: 0 0 24px; font-family: "Inter", sans-serif; font-size: 14px; font-weight: 400; line-height: 1.75; color: #555; }
+.dl-review-grid article > .dl-review-author { margin-top: auto; padding-top: 22px; border-top: 1px solid #8883; align-items: flex-start; }
+.dl-review-author > span { flex: 0 0 40px; }
+.dl-review-author > strong { min-width: 0; font-size: 12px; line-height: 1.5; }
+.dl-review-author small { font-size: 10px; line-height: 1.6; color: #68636d; }
+.dl-review-grid article:is(:hover,:focus-visible) small { color: #c9c1d4; }
+@media (min-width: 641px) and (max-width: 900px) {
+ .dl-review-grid { grid-template-columns: 1fr; gap: 18px; }
+ .dl-review-grid article { padding: 28px; }
+ .dl-review-grid .dl-review-title { font-size: 22px; }
+ .dl-review-grid article > p { font-size: 15px; }
+}
+@media (max-width: 640px) {
+ .dl-review-grid { gap: 16px; }
+ .dl-review-grid article { padding: 24px; }
+ .dl-review-grid .dl-review-title { margin-top: 20px; font-size: 20px; }
+}
+
+/* Keep each divider, avatar, and byline on the same horizontal baseline. */
+.dl-review-grid article > .dl-review-author:last-child {
+ margin-top: auto;
+ height: 112px;
+ min-height: 112px;
+ flex-shrink: 0;
+ padding-top: 22px;
+ align-items: flex-start;
+ box-sizing: border-box;
+}
+.dl-review-grid article > .dl-review-author:last-child > span { flex: 0 0 40px; }
+@media (max-width: 900px) {
+ .dl-review-grid article > .dl-review-author:last-child { height: auto; min-height: 96px; }
+}
+
+/* Keep the supplied lifestyle portraits framed naturally in both card sizes. */
+.dl-persona-grid img.persona-flight-attendant { object-position: 50% 38%; }
+.dl-persona-grid img.persona-business-owner { object-position: 65% 50%; }
