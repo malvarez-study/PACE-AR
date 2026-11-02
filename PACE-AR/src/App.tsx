@@ -520,11 +520,11 @@ return () => { window.removeEventListener('scroll',schedule); window.removeEvent
                 title: "Turned my boring daily commute into an RPG quest!",
                 quote: "I used to barely reach 3,000 steps a day. After getting the Midnight edition, I actually look forward to walking home to earn XP and build my daily streak. Hit my first 250 XP reward badge on week one!",
               },
-            ].map(({ name, role, location, title, quote, initials }) => <article tabIndex={0} key={name}>
+            ].map(({ name, role, location, title, quote }) => <article tabIndex={0} key={name}>
               <div className="dl-review-stars" role="img" aria-label="5 out of 5 stars">{[0, 1, 2, 3, 4].map(i => <i key={i} />)}</div>
               <h3 className="dl-review-title">“{title}”</h3>
               <p>“{quote}”</p>
-              <div className="dl-review-author"><span aria-hidden="true">{initials}</span><strong>{name}<small>{role}<br />{location}</small></strong></div>
+              <div className="dl-review-author"><span aria-hidden="true"><img src="/assets/review-profile.svg" alt="" width="28" height="28" style={{ objectFit: "contain" }} /></span><strong>{name}<small>{role}<br />{location}</small></strong></div>
             </article>)}
           </div>
         </div>

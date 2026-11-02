@@ -1,0 +1,15 @@
+PACE AR Website - latest version
+
+Includes editable React source, all assets, promo video, and dist (built website).
+
+Local development:
+1. Install Node.js 22.12 or newer.
+2. Extract this ZIP. Open a terminal in the PACE-AR folder.
+3. Run: npm install
+4. Run: npm run dev
+5. Open the localhost URL shown in the terminal.
+
+Build: npm run build
+Preview built site: npm run preview
+Hosting: deploy the dist folder to a static web host.
+Use a web server; do not double-click index.html.
