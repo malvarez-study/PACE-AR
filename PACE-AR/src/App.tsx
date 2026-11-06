@@ -475,7 +475,7 @@ return () => { window.removeEventListener('scroll',schedule); window.removeEvent
         <div className="dl-container">
           <div className="dl-section-heading centered"><Heading>However you move,<br />PACE AR moves with you.</Heading></div>
           <div className="dl-persona-grid">
-            <article><img className="persona-flight-attendant" src="/assets/campaign/persona-flight-attendant.jpeg" alt="Flight attendant standing inside an airplane cabin" /><div><span>Sophia Reyes · Quezon City</span><Heading level={3}>Every run becomes a story worth sharing.</Heading><p>Flight attendant and content creator, age 23.</p></div></article>
+            <article><img className="persona-flight-attendant" src="/assets/campaign/persona-flight-attendant.jpg" alt="Sophia Reyes running outdoors" /><div><span>Sophia Reyes · Quezon City</span><Heading level={3}>Every run becomes a story worth sharing.</Heading><p>Flight attendant and content creator, age 23.</p></div></article>
             <article><img className="persona-business-owner" src="/assets/campaign/persona-business-owner.png" alt="Professional working on a laptop at a desk" /><div><span>Paolo De Guzman · Makati</span><Heading level={3}>Fitness that works around a full day.</Heading><p>Business owner and corporate manager, age 32.</p></div></article>
           </div>
         </div>

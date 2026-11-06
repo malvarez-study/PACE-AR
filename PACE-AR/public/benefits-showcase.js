@@ -72,7 +72,7 @@ function installShowcase() {
   const caption = document.createElement('div');
   caption.className = 'benefits-video-caption';
   const label = document.createElement('strong');
-  label.textContent = '05 / SCANNABLE AR FITNESS QUESTS';
+  label.textContent = 'SCANNABLE AR FITNESS QUESTS';
   const detail = document.createElement('span');
   detail.textContent = 'Turn any place into your next challenge.';
   caption.append(label, detail);
